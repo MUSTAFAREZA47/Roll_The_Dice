@@ -1,9 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
 import React, {useState} from 'react';
 import {
@@ -24,6 +19,11 @@ import DiceThree from '../assets/Three.png';
 import DiceFour from '../assets/Four.png';
 import DiceFive from '../assets/Five.png';
 import DiceSix from '../assets/Six.png';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 function App(): React.JSX.Element {
   const [diceImage, setDiceImage] = useState(DiceOne);
@@ -55,6 +55,8 @@ function App(): React.JSX.Element {
         setDiceImage(DiceOne);
         break;
     }
+
+    ReactNativeHapticFeedback.trigger('impactLight', options);
   };
 
   return (
